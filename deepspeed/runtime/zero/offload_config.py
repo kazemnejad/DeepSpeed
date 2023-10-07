@@ -28,13 +28,13 @@ class DeepSpeedZeroOffloadParamConfig(DeepSpeedConfigModel):
     nvme_path: Path = None
     """ Filesystem path for NVMe device for parameter offloading. """
 
-    buffer_count: int = Field(5, ge=0)
+    buffer_count: int = Field(5, ge=float(0))
     """ Number of buffers in buffer pool for parameter offloading to NVMe. """
 
-    buffer_size: int = Field(pp_int(1e8), ge=0)
+    buffer_size: int = Field(pp_int(1e8), ge=float(0))
     """ Size of buffers in buffer pool for parameter offloading to NVMe. """
 
-    max_in_cpu: int = Field(pp_int(1e9), ge=0)
+    max_in_cpu: int = Field(pp_int(1e9), ge=float(0))
     """
     Number of parameter elements to maintain in CPU memory when offloading to
     NVMe is enabled.
@@ -59,7 +59,7 @@ class DeepSpeedZeroOffloadOptimizerConfig(DeepSpeedConfigModel):
     nvme_path: Path = None
     """ Filesystem path for NVMe device for optimizer state offloading. """
 
-    buffer_count: int = Field(4, ge=0)
+    buffer_count: int = Field(4, ge=float(0))
     """
     Number of buffers in buffer pool for optimizer state offloading to NVMe.
     This should be at least the number of states maintained per parameter by
